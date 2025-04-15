@@ -80,6 +80,7 @@ else:
     if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
         with open("samples/discour_boni_yayi_2006.txt", "r") as f:
             text_input = f.read()
+        selected_language = "french"
         # text_input = """
         # En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
         # je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
@@ -94,6 +95,7 @@ else:
     elif sample_option == "USA Presidential Speech (Donald Trump 2025)":
         with open("samples/discour_trump_2025.txt", "r") as f:
             text_input = f.read()
+        selected_language = "english"
     else:
         text_input = """
         La complexité de l'algorithme est O(n log n) dans le cas moyen mais se dégrade à O(n²) dans le pire des cas.
@@ -236,21 +238,50 @@ if text_input:
                 
                 try:
                     # Generate word cloud
+                    from wordcloud import WordCloud
+                    import matplotlib.pyplot as plt
+                    import matplotlib.patheffects as path_effects
+                    
+                    # --- Generate the WordCloud ---
                     wordcloud = WordCloud(
-                        width=wc_width, 
-                        height=wc_height, 
-                        background_color=wc_background,
+                        width=wc_width,
+                        height=wc_height,
+                        background_color=wc_background,  # try "white", "#f5f5f5", or "black" for contrast
                         max_words=max_words_to_display,
-                        colormap=selected_colormap if selected_colormap != "default" else None,
-                        prefer_horizontal=0.7
+                        colormap=selected_colormap if selected_colormap != "default" else "viridis",  # use a smooth colormap
+                        prefer_horizontal=0.9,
+                        contour_color='steelblue',  # adds an outline
+                        contour_width=1.5,
+                        random_state=42,  # reproducibility
+                        font_path='arial.ttf'  # optional: use custom font
                     ).generate_from_frequencies(filtered_counts)
                     
-                    # Display the word cloud
-                    fig, ax = plt.subplots(figsize=(10, 5))
-                    ax.imshow(wordcloud, interpolation='bilinear')
-                    ax.axis("off")
-                    plt.title("EMA Bénin 2025 - Word Cloud Analysis", fontsize=16, pad=20)
-                    st.pyplot(fig)
+                    # --- Display the WordCloud ---
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.imshow(wordcloud, interpolation='bilinear')
+ax.axis("off")
+
+# Stylish Title
+title = ax.set_title(
+    "✨ EMA Bénin 2025 – Word Cloud Analysis ✨",
+    fontsize=16,
+    color="#2c3e50",
+    pad=20,
+    weight='bold'
+)
+
+# Add subtle shadow to title
+title.set_path_effects([
+    path_effects.Stroke(linewidth=1.5, foreground='white'),
+    path_effects.Normal()
+])
+
+# Set tight layout and soft background
+fig.patch.set_facecolor('#f0f0f0')
+fig.tight_layout(pad=2)
+
+st.pyplot(fig)
+
                     
                     # Download option
 
