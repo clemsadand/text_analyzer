@@ -77,18 +77,20 @@ else:
     sample_option = st.sidebar.selectbox("Choose a sample text:", 
                                        ["Bénin Presidential Speech", "Short Story", "Technical Document"])
     
-    if sample_option == "Bénin Presidential Speech":
-        text_input = """
-        En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
-        je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
-        notre chère patrie. J'exprime toute ma gratitude, et ce avec beaucoup de respect et de considération au vaillant 
-        peuple béninois qui a bien voulu me renouveler sa confiance, pour continuer de conduire ensemble notre nation sur 
-        le chemin de l'unité, de la paix, du progrès, de la solidarité et de la prospérité.
+    if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
+        with open("samples/discour_boni_yayi_2006.txt", "r") as f:
+            text_input = f.read()
+        # text_input = """
+        # En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
+        # je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
+        # notre chère patrie. J'exprime toute ma gratitude, et ce avec beaucoup de respect et de considération au vaillant 
+        # peuple béninois qui a bien voulu me renouveler sa confiance, pour continuer de conduire ensemble notre nation sur 
+        # le chemin de l'unité, de la paix, du progrès, de la solidarité et de la prospérité.
         
-        Excellences Madame, Messieurs les Chefs d'Etat, Distingués Représentants des Chefs d'Etat,
-        Au nom du peuple béninois, je vous remercie du fond du cœur d'être venus rehausser de votre présence, 
-        la cérémonie de ce jour.
-        """
+        # Excellences Madame, Messieurs les Chefs d'Etat, Distingués Représentants des Chefs d'Etat,
+        # Au nom du peuple béninois, je vous remercie du fond du cœur d'être venus rehausser de votre présence, 
+        # la cérémonie de ce jour.
+        # """
     elif sample_option == "Short Story":
         text_input = """
         Le vieil arbre de baobab se dressait à la lisière de la forêt, ses branches s'étendant vers le ciel.
