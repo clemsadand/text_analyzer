@@ -228,6 +228,12 @@ if text_input:
     if word_counts and len(word_counts) > 0:
         # Filter by minimum frequency
         filtered_counts = {word: count for word, count in word_counts.items() if count >= min_word_freq}
+        sort_counts = {
+            word: count
+            for word, count in sorted(word_counts.items(), key=lambda item: item[1], reverse=True)
+            if count >= min_word_freq
+        }
+
         
         if filtered_counts:
             # Create tabs for different visualizations
@@ -254,11 +260,11 @@ if text_input:
                         contour_width=0.0,
                         # random_state=42,  # reproducibility
                         # font_path='arial.ttf'  # optional: use custom font
-                    ).generate_from_frequencies(filtered_counts)
+                    ).generate_from_frequencies(sort_counts)
                     
                     # --- Display the WordCloud ---
                     fig, ax = plt.subplots(figsize=(12, 6))
-                    ax.imshow(wordcloud, interpolation='bicubic')
+                    ax.imshow(wordcloud, interpolation='nearest')
                     ax.axis("off")
                     
                     # Stylish Title
