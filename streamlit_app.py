@@ -184,7 +184,7 @@ def process_text(text, remove_stops=True, language='english', additional_stops=N
     try:
         # Lowercase and replace punctuation with spaces
         text = text.lower()
-        for char in [',', '.', "'", '"', ';', ':', '!', '?', '(', ')', '[', ']', '{', '}', '\n', '\t']:
+        for char in [',', '.', "'", '"', ';', ':', '!', '?', '(', ')', '[', ']', '{', '}', '\n', '\t', '’']:
             text = text.replace(char, ' ')
         
         # Split into words
