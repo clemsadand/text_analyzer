@@ -251,14 +251,14 @@ if text_input:
                         colormap=selected_colormap if selected_colormap != "default" else "viridis",  # use a smooth colormap
                         prefer_horizontal=0.9,
                         contour_color='steelblue',  # adds an outline
-                        contour_width=1.5,
-                        random_state=42,  # reproducibility
+                        contour_width=0.0,
+                        # random_state=42,  # reproducibility
                         # font_path='arial.ttf'  # optional: use custom font
                     ).generate_from_frequencies(filtered_counts)
                     
                     # --- Display the WordCloud ---
                     fig, ax = plt.subplots(figsize=(12, 6))
-                    ax.imshow(wordcloud, interpolation='bilinear')
+                    ax.imshow(wordcloud, interpolation='bicubic')
                     ax.axis("off")
                     
                     # Stylish Title
