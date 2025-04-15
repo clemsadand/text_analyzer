@@ -91,14 +91,9 @@ else:
         # Au nom du peuple béninois, je vous remercie du fond du cœur d'être venus rehausser de votre présence, 
         # la cérémonie de ce jour.
         # """
-    elif sample_option == "Short Story":
-        text_input = """
-        Le vieil arbre de baobab se dressait à la lisière de la forêt, ses branches s'étendant vers le ciel.
-        Pendant des siècles, il avait été témoin des saisons changeantes, des allées et venues de la faune.
-        Les enfants jouaient sous son ombre en été, et les oiseaux nichaient dans ses branches chaque printemps.
-        Quand l'hiver arrivait, il se tenait nu contre la neige, une sentinelle silencieuse veillant sur la terre.
-        L'arbre avait vu passer des générations, mais restait inébranlable à travers le temps et les changements.
-        """
+    elif sample_option == "USA Presidential Speech (Donald Trump 2025)":
+        with open("samples/discour_trump_2025.txt", "r") as f:
+            text_input = f.read()
     else:
         text_input = """
         La complexité de l'algorithme est O(n log n) dans le cas moyen mais se dégrade à O(n²) dans le pire des cas.
