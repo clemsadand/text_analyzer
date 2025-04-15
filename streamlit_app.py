@@ -159,7 +159,7 @@ max_words_to_display = st.sidebar.slider("Maximum words to display in chart:", 1
 st.sidebar.header("Word Cloud Options")
 wc_width = st.sidebar.slider("Width:", 400, 1200, 800)
 wc_height = st.sidebar.slider("Height:", 200, 800, 400)
-wc_background = st.sidebar.color_picker("Background color:", "#FFFFFF")
+wc_background = st.sidebar.color_picker("Background color:", "#f5f5f5")
 
 # Custom color map - Bénin flag colors inspired
 color_options = {
