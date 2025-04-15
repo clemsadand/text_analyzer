@@ -80,7 +80,6 @@ else:
     if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
         with open("samples/discour_boni_yayi_2006.txt", "r") as f:
             text_input = f.read()
-            st.write(text_input)
         # text_input = """
         # En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
         # je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
