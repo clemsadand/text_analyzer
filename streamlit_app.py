@@ -6,6 +6,7 @@ from wordcloud import WordCloud
 import nltk
 from nltk.corpus import stopwords
 import os
+import io
 import warnings
 
 # Suppress warnings
@@ -239,12 +240,20 @@ if text_input:
                     st.pyplot(fig)
                     
                     # Download option
+
+                    # Save word cloud to buffer
+                    buffer = io.BytesIO()
+                    fig.savefig(buffer, format='png')
+                    buffer.seek(0)
+                    
+                    # Download option
                     st.download_button(
                         label="Download Word Cloud Image",
-                        data=plt.savefig,
+                        data=buffer,
                         file_name="ema_benin_2025_wordcloud.png",
                         mime="image/png"
                     )
+
                 except Exception as e:
                     st.error(f"Error generating word cloud: {e}")
                 
