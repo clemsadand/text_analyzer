@@ -257,30 +257,30 @@ if text_input:
                     ).generate_from_frequencies(filtered_counts)
                     
                     # --- Display the WordCloud ---
-fig, ax = plt.subplots(figsize=(12, 6))
-ax.imshow(wordcloud, interpolation='bilinear')
-ax.axis("off")
-
-# Stylish Title
-title = ax.set_title(
-    "✨ EMA Bénin 2025 – Word Cloud Analysis ✨",
-    fontsize=16,
-    color="#2c3e50",
-    pad=20,
-    weight='bold'
-)
-
-# Add subtle shadow to title
-title.set_path_effects([
-    path_effects.Stroke(linewidth=1.5, foreground='white'),
-    path_effects.Normal()
-])
-
-# Set tight layout and soft background
-fig.patch.set_facecolor('#f0f0f0')
-fig.tight_layout(pad=2)
-
-st.pyplot(fig)
+                    fig, ax = plt.subplots(figsize=(12, 6))
+                    ax.imshow(wordcloud, interpolation='bilinear')
+                    ax.axis("off")
+                    
+                    # Stylish Title
+                    title = ax.set_title(
+                        "✨ EMA Bénin 2025 – Word Cloud Analysis ✨",
+                        fontsize=12,
+                        color="#2c3e50",
+                        pad=20,
+                        weight='bold'
+                    )
+                    
+                    # Add subtle shadow to title
+                    title.set_path_effects([
+                        path_effects.Stroke(linewidth=1.5, foreground='white'),
+                        path_effects.Normal()
+                    ])
+                    
+                    # Set tight layout and soft background
+                    fig.patch.set_facecolor('#f0f0f0')
+                    fig.tight_layout(pad=2)
+                    
+                    st.pyplot(fig)
 
                     
                     # Download option
