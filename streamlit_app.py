@@ -75,7 +75,7 @@ elif input_option == "Upload Text File":
 else:
     # Sample text option
     sample_option = st.sidebar.selectbox("Choose a sample text:", 
-                                       ["Bénin Presidential Speech", "Short Story", "Technical Document"])
+                                       ["Presidential Speech (Boni Yayi 2006)", "USA Presidential Speech (Donald Trump 2025)", "Technical Document"])
     
     if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
         with open("samples/discour_boni_yayi_2006.txt", "r") as f:
