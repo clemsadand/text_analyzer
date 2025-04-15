@@ -151,7 +151,7 @@ additional_stopwords_list = [word.strip() for word in additional_stopwords.split
 min_word_freq = st.sidebar.slider("Minimum word frequency:", 1, 50, 2, help="Only show words that appear at least this many times")
 
 # Set maximum number of words to display
-max_words_to_display = st.sidebar.slider("Maximum words to display in chart:", 10, 100, 30)
+max_words_to_display = st.sidebar.slider("Maximum words to display in chart:", 10, 500, 100)
 
 # Word cloud customization
 st.sidebar.header("Word Cloud Options")
