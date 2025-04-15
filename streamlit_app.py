@@ -51,9 +51,21 @@ input_option = st.sidebar.radio("Choose input method:", ["Enter Text", "Upload T
 text_input = ""
 
 if input_option == "Enter Text":
-    text_input = st.sidebar.text_area("Enter your text here:", height=300)
+    text_input = st.sidebar.text_area(
+        "Enter your text here:", 
+        height=300, 
+        placeholder="Paste or type your text here for analysis. For best results, include at least a few paragraphs of text in French or your chosen language."
+    )
 elif input_option == "Upload Text File":
-    uploaded_file = st.sidebar.file_uploader("Upload a text file", type=['txt'])
+    uploaded_file = st.sidebar.file_uploader(
+        "Upload a text file", 
+        type=['txt'],
+        help="Upload a plain text (.txt) file. Maximum size: 200MB"
+    )
+    # Add a placeholder message below the uploader
+    if not uploaded_file:
+        st.sidebar.info("📄 Upload a text file to analyze its content. Common formats like articles, speeches, or reports work best.")
+    
     if uploaded_file is not None:
         try:
             text_input = uploaded_file.getvalue().decode("utf-8")
@@ -128,14 +140,18 @@ selected_language = st.sidebar.selectbox("Select language for stopwords:",
                                         format_func=lambda x: language_options[x])
 
 # Remove stopwords option
-remove_stopwords = st.sidebar.checkbox("Remove stopwords", value=True)
+remove_stopwords = st.sidebar.checkbox("Remove stopwords", value=True, help="Filter out common words like 'le', 'la', 'et', etc.")
 
-# Additional stopwords input
-additional_stopwords = st.sidebar.text_input("Additional stopwords (comma separated):", "")
+# Additional stopwords input with placeholder
+additional_stopwords = st.sidebar.text_input(
+    "Additional stopwords (comma separated):", 
+    "", 
+    placeholder="e.g., bénin, aujourd'hui, monsieur, madame"
+)
 additional_stopwords_list = [word.strip() for word in additional_stopwords.split(',') if word.strip()] if additional_stopwords else []
 
 # Set minimum word frequency
-min_word_freq = st.sidebar.slider("Minimum word frequency:", 1, 50, 2)
+min_word_freq = st.sidebar.slider("Minimum word frequency:", 1, 50, 2, help="Only show words that appear at least this many times")
 
 # Set maximum number of words to display
 max_words_to_display = st.sidebar.slider("Maximum words to display in chart:", 10, 100, 30)
@@ -321,7 +337,13 @@ if text_input:
     else:
         st.warning("No words found after processing. Check your input and processing options.")
 else:
+    # Add a placeholder message when no text is provided
     st.info("Please enter some text, upload a file, or select a sample text to begin analysis.")
+    
+    # Display a placeholder visualization
+    st.markdown("### Preview of Word Cloud Visualization")
+    st.image("https://via.placeholder.com/800x400?text=Word+Cloud+Preview", 
+             caption="A sample word cloud will appear here after text analysis")
 
 # Footer
 st.markdown("---")
