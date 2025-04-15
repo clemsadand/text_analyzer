@@ -76,11 +76,12 @@ else:
     # Sample text option
     sample_option = st.sidebar.selectbox("Choose a sample text:", 
                                        ["Bénin Presidential Speech (Boni Yayi 2006)", "USA Presidential Speech (Donald Trump 2025)", "Technical Document"])
-    
+
+    selected_language_auto = None
     if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
         with open("samples/discour_boni_yayi_2006.txt", "r") as f:
             text_input = f.read()
-        selected_language = "french"
+        selected_language_auto = "french"
         # text_input = """
         # En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
         # je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
@@ -95,7 +96,7 @@ else:
     elif sample_option == "USA Presidential Speech (Donald Trump 2025)":
         with open("samples/discour_trump_2025.txt", "r") as f:
             text_input = f.read()
-        selected_language = "english"
+        selected_language_auto = "english"
     else:
         text_input = """
         La complexité de l'algorithme est O(n log n) dans le cas moyen mais se dégrade à O(n²) dans le pire des cas.
@@ -133,10 +134,10 @@ if resource_status:
 # Default to French for Bénin
 default_language_index = available_languages.index('french') if 'french' in available_languages else 0
 
-selected_language = st.sidebar.selectbox("Select language for stopwords:", 
+selected_language = selected_language_auto if selected_language_auto else st.sidebar.selectbox("Select language for stopwords:", 
                                         list(language_options.keys()),
                                         index=default_language_index,
-                                        format_func=lambda x: language_options[x])
+                                        format_func=lambda x: language_options[x]) if auto_selecti
 
 # Remove stopwords option
 remove_stopwords = st.sidebar.checkbox("Remove stopwords", value=True, help="Filter out common words like 'le', 'la', 'et', etc.")
