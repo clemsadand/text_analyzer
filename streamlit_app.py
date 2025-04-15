@@ -253,7 +253,7 @@ if text_input:
                         contour_color='steelblue',  # adds an outline
                         contour_width=1.5,
                         random_state=42,  # reproducibility
-                        font_path='arial.ttf'  # optional: use custom font
+                        # font_path='arial.ttf'  # optional: use custom font
                     ).generate_from_frequencies(filtered_counts)
                     
                     # --- Display the WordCloud ---
