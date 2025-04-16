@@ -175,7 +175,7 @@ color_options = {
 }
 selected_colormap = st.sidebar.selectbox("Color scheme:", 
                                       list(color_options.keys()),
-                                      index=0,  # Default to Greens for Bénin
+                                      index=1,  # Default to Yellow-red Bénin
                                       format_func=lambda x: color_options[x])
 
 # Function to process text safely
