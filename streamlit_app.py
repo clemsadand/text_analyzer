@@ -227,7 +227,8 @@ if text_input:
     
     if word_counts and len(word_counts) > 0:
         # Filter by minimum frequency
-        filtered_counts = {word: count for word, count in word_counts.items() if count >= min_word_freq}
+                filtered_counts = {word: count for word, count in word_counts.items() if count >= min_word_freq}
+
         sort_counts = {
             word: count
             for word, count in sorted(word_counts.items(), key=lambda item: item[1], reverse=True)
@@ -235,7 +236,7 @@ if text_input:
         }
 
         
-        if filtered_counts:
+        if sort_counts:
             # Create tabs for different visualizations
             tab1, tab2, tab3 = st.tabs(["Word Cloud", "Bar Chart", "Data Table"])
             
@@ -311,7 +312,7 @@ if text_input:
                 st.header("Word Frequency Bar Chart")
                 
                 # Create dataframe from filtered counts
-                filtered_df = pd.DataFrame(filtered_counts.items(), columns=['word', 'count'])
+                filtered_df = pd.DataFrame(sort_counts.items(), columns=['word', 'count'])
                 filtered_df = filtered_df.sort_values(by="count", ascending=False).head(max_words_to_display)
                 
                 try:
@@ -365,7 +366,7 @@ if text_input:
                     st.metric("Unique Words", len(word_counts))
                 
                 with col3:
-                    st.metric("Words After Filtering", len(filtered_counts))
+                    st.metric("Words After Filtering", len(sort_counts))
         else:
             st.warning("No words meet the minimum frequency threshold. Try lowering the minimum frequency.")
     else:
