@@ -227,7 +227,7 @@ if text_input:
     
     if word_counts and len(word_counts) > 0:
         # Filter by minimum frequency
-                filtered_counts = {word: count for word, count in word_counts.items() if count >= min_word_freq}
+        filtered_counts = {word: count for word, count in word_counts.items() if count >= min_word_freq}
 
         sort_counts = {
             word: count
