@@ -105,6 +105,7 @@ else:
         Les utilisateurs peuvent configurer les paramètres via l'interface en ligne de commande ou l'API REST.
         Les détails d'implémentation sont documentés dans le document de spécifications techniques.
         """
+        selected_language_auto = None
     
     st.sidebar.success(f"Sample text loaded: {sample_option}")
 
