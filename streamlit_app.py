@@ -134,7 +134,7 @@ if resource_status:
 # Default to French for Bénin
 default_language_index = available_languages.index('french') if 'french' in available_languages else 0
 
-selected_language = selected_language_auto  if selected_language_auto else st.sidebar.selectbox("Select language for stopwords:", 
+selected_language = selected_language_auto  if selected_language_auto is not None else st.sidebar.selectbox("Select language for stopwords:", 
                                         list(language_options.keys()),
                                         index=default_language_index,
                                         format_func=lambda x: language_options[x])
