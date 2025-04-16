@@ -77,11 +77,9 @@ else:
     sample_option = st.sidebar.selectbox("Choose a sample text:", 
                                        ["Bénin Presidential Speech (Boni Yayi 2006)", "USA Presidential Speech (Donald Trump 2025)", "Technical Document"])
 
-    selected_language_auto = "french"
     if sample_option == "Bénin Presidential Speech (Boni Yayi 2006)":
         with open("samples/discour_boni_yayi_2006.txt", "r") as f:
             text_input = f.read()
-        selected_language_auto = "french"
         # text_input = """
         # En cette circonstance solennelle, que je vis avec beaucoup d'émotion et surtout d'espoir et d'espérance, 
         # je voudrais rendre grâce à Dieu, le Tout-Puissant, pour son infinie bonté et sa miséricorde à l'endroit du Bénin, 
@@ -96,7 +94,6 @@ else:
     elif sample_option == "USA Presidential Speech (Donald Trump 2025)":
         with open("samples/discour_trump_2025.txt", "r") as f:
             text_input = f.read()
-        selected_language_auto = "english"
     else:
         text_input = """
         La complexité de l'algorithme est O(n log n) dans le cas moyen mais se dégrade à O(n²) dans le pire des cas.
@@ -105,7 +102,6 @@ else:
         Les utilisateurs peuvent configurer les paramètres via l'interface en ligne de commande ou l'API REST.
         Les détails d'implémentation sont documentés dans le document de spécifications techniques.
         """
-        selected_language_auto = "french"
     
     st.sidebar.success(f"Sample text loaded: {sample_option}")
 
@@ -134,8 +130,6 @@ if resource_status:
 
 # Default to French for Bénin
 default_language_index = available_languages.index('french') if 'french' in available_languages else 0
-if selected_language_auto is not None:
-    default_language_index = available_languages.index(selected_language_auto)
 
 selected_language = st.sidebar.selectbox("Select language for stopwords:", 
         list(language_options.keys()),
